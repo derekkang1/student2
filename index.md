@@ -3,6 +3,7 @@ layout: default
 title: Student Blog
 ---
 
+
 ## CSSE Home Page -Derek Kang
 Welcome to my blog page.
 
