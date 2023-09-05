@@ -2,10 +2,10 @@
 toc: true
 comments: true
 layout: post
-title: Review Ticket
-description: Example Review Ticket!!! This will help us communicate results.
+title: Review Ticket Week 2
+description: Review Ticket Week 2
 type: tangibles
-courses: { compsci: {week: 1} }
+courses: { compsci: {week: 2} }
 ---
 
 ### Summary of Accomplishments
