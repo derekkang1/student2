@@ -11,7 +11,7 @@ courses: { compsci: {week: 2} }
 
 <html>
 <head>
-    <title> Simple Calculator<title>
+    <title> Simple Calculator</title>
     <style>
         /* Add some basic styles for the calculator */
         body {
@@ -67,7 +67,7 @@ courses: { compsci: {week: 2} }
         <button onclick="appendToDisplay('/')">/</button>
     </div>
 
-<script>
+    <script>
         // JavaScript functions for calculator operations
         function appendToDisplay(value) {
             document.getElementById('display').value += value;
