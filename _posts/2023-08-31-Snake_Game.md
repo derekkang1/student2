@@ -273,14 +273,16 @@ courses: { compsci: {week: 2} }
             }
             // Repaint canvas
             ctx.beginPath();
-            ctx.fillStyle = "royalblue";
+            ctx.fillStyle = "lightgreen";
             ctx.fillRect(0, 0, canvas.width, canvas.height);
             // Paint snake
             for(let i = 0; i < snake.length; i++){
-                activeDot(snake[i].x, snake[i].y);
+                activeDot(snake[i].x, snake[i].y, false); // Draw snake
+
             }
             // Paint food
-            activeDot(food.x, food.y);
+            activeDot(food.x, food.y, true); // Draw food
+
             // Debug
             //document.getElementById("debug").innerHTML = snake_dir + " " + snake_next_dir + " " + snake[0].x + " " + snake[0].y;
             // Recursive call after speed delay, déjà vu
@@ -332,15 +334,16 @@ courses: { compsci: {week: 2} }
         }
         /* Dot for Food or Snake part */
         /////////////////////////////////////////////////////////////
-        let activeDot = function(x, y){
-            ctx.fillStyle = "#FFFFFF";
+
+        let activeDot = function(x, y, isFood = false){
+            if (isFood) {
+                ctx.fillStyle = "red"; // Color for the food
+            } 
+            else {
+                ctx.fillStyle = "blue"; // Color for the snake
+            }
             ctx.fillRect(x * BLOCK, y * BLOCK, BLOCK, BLOCK);
         }
-        let appleDot = function(x, y){
-            ctx.font = "16px Segoe UI Emoji";
-            ctx.fillText("🐵", x * BLOCK, y * BLOCK);
-        }
-
         /* Random food placement */
         /////////////////////////////////////////////////////////////
         let addFood = function(){
