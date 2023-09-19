@@ -13,4 +13,3 @@ Welcome to my blog page.
 DNHS Class of 2027
 
 <img src="{{site.baseurl}}/images/test1 csse.png">
-woifiojerifgihrweovgnoeivgooeirierofiedsacsdcsvs
