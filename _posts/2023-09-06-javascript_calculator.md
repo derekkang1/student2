@@ -7,23 +7,7 @@ description: This is Javascript calculator
 type: hacks
 courses: { compsci: {week: 4} }
 ---
-<!-- 
-Hack 0: Right justify result
-Hack 1: Test conditions on small, big, and decimal numbers, report on findings. Fix issues.
-Hack 2: Add the common math operation that is missing from calculator
-Hack 3: Implement 1 number operation (ie SQRT) 
--->
 
-<!-- 
-HTML implementation of the calculator. 
--->
-
-<!-- 
-    Style and Action are aligned with HRML class definitions
-    style.css contains majority of style definition (number, operation, clear, and equals)
-    - The div calculator-container sets 4 elements to a row
-    Background is credited to Vanta JS and is implemented at bottom of this page
--->
 <style>
   .calculator-output {
     /* calulator output 
