@@ -110,10 +110,3 @@ courses: { compsci: {week: 3} }
         </tbody>
     </table>
 </body>
-
-| Name         | Age | City         |
-|--------------|-----|--------------|
-| John Doe     | 30  | New York     |
-| Jane Smith   | 25  | Los Angeles  |
-| Bob Johnson  | 35  | Chicago      |
-| Alice Brown  | 28  | San Francisco|
