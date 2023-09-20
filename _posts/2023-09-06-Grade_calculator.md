@@ -43,23 +43,47 @@ function calculator(event) {
                 count++;
             }
         }
-
-        // update totals
+    // update totals
         document.getElementById('total').innerHTML = total.toFixed(2); // show two decimals
         document.getElementById('count').innerHTML = count;
 
         if (count > 0) {
-            document.getElementById('average').innerHTML = (total / count).toFixed(2);
-        } else {
-            document.getElementById('average').innerHTML = "0.0";
-        }
+          var average = total / count;
+          document.getElementById('average').innerHTML = average.toFixed(2);
 
-        // adds newInputLine, only if all array values satisfy parseFloat 
-        if (count === document.getElementsByName('score').length) {
-            newInputLine(count); // make a new input line
-        }
+        // Calculate letter grade based on average score
+        var letterGrade = calculateLetterGrade(average);
+         document.getElementById('letterGrade').innerHTML = letterGrade;
+       } else {
+         document.getElementById('average').innerHTML = "0.0";
+         document.getElementById('letterGrade').innerHTML = ""; // Clear letter grade if there are no scores.
     }
+
+    // adds newInputLine, only if all array values satisfy parseFloat 
+    if (count === document.getElementsByName('score').length) {
+      newInputLine(count); // make a new input line
+    }
+  }
 }
+// Function to calculate the letter grade based on the average score
+function calculateLetterGrade(average) {
+  if (average >= 90) {
+    return 'A';
+  } else if (average >= 80) {
+    return 'B';
+  } else if (average >= 70) {
+    return 'C';
+  } else if (average >= 60) {
+    return 'D';
+  } else {
+    return 'F';
+  }
+}
+
+<!-- Letter Grade -->
+<div>
+  Letter Grade: <span id="letterGrade"></span>
+</div>
 
 // Creates a new input box
 function newInputLine(index) {
