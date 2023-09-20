@@ -26,37 +26,40 @@ courses: { compsci: {week: 4} }
 <script>
 // Executes on input event and calculates totals
 function calculator(event) {
-    var key = event.key;
-    // Check if the pressed key is the "Tab" key (key code 9) or "Enter" key (key code 13)
-    if (key === "Tab" || key === "Enter") { 
-        event.preventDefault(); // Prevent default behavior (tabbing to the next element)
-   
-        var array = document.getElementsByName('score'); // setup array of scores
-        var total = 0;  // running total
-        var count = 0;  // count of input elements with valid values
+  var key = event.key;
 
-        for (var i = 0; i < array.length; i++) {  // iterate through array
-            var value = array[i].value;
-            if (parseFloat(value)) {
-                var parsedValue = parseFloat(value);
-                total += parsedValue;  // add to running total
-                count++;
-            }
-        }
+  // Check if the pressed key is the "Tab" key (key code 9) or "Enter" key (key code 13)
+  if (key === "Tab" || key === "Enter") {
+    event.preventDefault(); // Prevent default behavior (tabbing to the next element)
+
+    var array = document.getElementsByName('score'); // setup array of scores
+    var total = 0;  // running total
+    var count = 0;  // count of input elements with valid values
+
+    for (var i = 0; i < array.length; i++) {  // iterate through array
+      var value = array[i].value;
+
+      if (parseFloat(value)) {
+        var parsedValue = parseFloat(value);
+        total += parsedValue;  // add to running total
+        count++;
+      }
+    }
+
     // update totals
-        document.getElementById('total').innerHTML = total.toFixed(2); // show two decimals
-        document.getElementById('count').innerHTML = count;
+    document.getElementById('total').innerHTML = total.toFixed(2); // show two decimals
+    document.getElementById('count').innerHTML = count;
 
-        if (count > 0) {
-          var average = total / count;
-          document.getElementById('average').innerHTML = average.toFixed(2);
+    if (count > 0) {
+      var average = total / count;
+      document.getElementById('average').innerHTML = average.toFixed(2);
 
-        // Calculate letter grade based on average score
-        var letterGrade = calculateLetterGrade(average);
-         document.getElementById('letterGrade').innerHTML = letterGrade;
-       } else {
-         document.getElementById('average').innerHTML = "0.0";
-         document.getElementById('letterGrade').innerHTML = ""; // Clear letter grade if there are no scores.
+      // Calculate letter grade based on average score
+      var letterGrade = calculateLetterGrade(average);
+      document.getElementById('letterGrade').innerHTML = letterGrade;
+    } else {
+      document.getElementById('average').innerHTML = "0.0";
+      document.getElementById('letterGrade').innerHTML = ""; // Clear letter grade if there are no scores.
     }
 
     // adds newInputLine, only if all array values satisfy parseFloat 
@@ -65,6 +68,7 @@ function calculator(event) {
     }
   }
 }
+
 // Function to calculate the letter grade based on the average score
 function calculateLetterGrade(average) {
   if (average >= 90) {
