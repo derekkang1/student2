@@ -19,6 +19,10 @@ courses: { compsci: {week: 4} }
     Average : <span id="average">0.0</span>
 </li>
 </ul>
+
+<!-- Add a clear button -->
+<button onclick="clearInputs()">Clear Inputs</button>
+
 <!-- Rows added using scores ID -->
 <div id="scores">
     <!-- javascript generated inputs -->
@@ -61,8 +65,7 @@ function calculator(event) {
         }
     }
 }
-<!-- Add a clear button -->
-<button onclick="clearInputs()">Clear Inputs</button>
+
 // Function to clear all input fields
 function clearInputs() {
     var array = document.getElementsByName('score');
