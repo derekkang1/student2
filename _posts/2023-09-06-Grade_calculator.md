@@ -62,6 +62,31 @@ function calculator(event) {
     }
 }
 
+<!-- Add a section for displaying the entered scores -->
+<div id="score-summary">
+    <h3>Entered Scores</h3>
+    <ul id="score-list">
+        <!-- Scores will be added here -->
+    </ul>
+</div>
+
+// Function to display entered scores
+function displayScores() {
+    var array = document.getElementsByName('score');
+    var scoreList = document.getElementById('score-list');
+    scoreList.innerHTML = ''; // Clear previous entries
+    for (var i = 0; i < array.length; i++) {
+        var value = array[i].value;
+        if (parseFloat(value)) {
+            var listItem = document.createElement('li');
+            listItem.textContent = `Score ${i + 1}: ${parseFloat(value).toFixed(2)}`;
+            scoreList.appendChild(listItem);
+        }
+    }
+}
+// In the calculator function, after updating totals:
+displayScores();
+
 // Creates a new input box
 function newInputLine(index) {
 
@@ -91,30 +116,5 @@ function newInputLine(index) {
 
 // Creates 1st input box on Window load
 newInputLine(0);
-
-<!-- Add a section for displaying the entered scores -->
-<div id="score-summary">
-    <h3>Entered Scores</h3>
-    <ul id="score-list">
-        <!-- Scores will be added here -->
-    </ul>
-</div>
-
-// Function to display entered scores
-function displayScores() {
-    var array = document.getElementsByName('score');
-    var scoreList = document.getElementById('score-list');
-    scoreList.innerHTML = ''; // Clear previous entries
-    for (var i = 0; i < array.length; i++) {
-        var value = array[i].value;
-        if (parseFloat(value)) {
-            var listItem = document.createElement('li');
-            listItem.textContent = `Score ${i + 1}: ${parseFloat(value).toFixed(2)}`;
-            scoreList.appendChild(listItem);
-        }
-    }
-}
-// In the calculator function, after updating totals:
-displayScores();
 
 </script>
