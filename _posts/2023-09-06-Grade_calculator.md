@@ -61,31 +61,19 @@ function calculator(event) {
         }
     }
 }
-
-<!-- Add a section for displaying the entered scores -->
-<div id="score-summary">
-    <h3>Entered Scores</h3>
-    <ul id="score-list">
-        <!-- Scores will be added here -->
-    </ul>
-</div>
-
-// Function to display entered scores
-function displayScores() {
+<!-- Add a clear button -->
+<button onclick="clearInputs()">Clear Inputs</button>
+// Function to clear all input fields
+function clearInputs() {
     var array = document.getElementsByName('score');
-    var scoreList = document.getElementById('score-list');
-    scoreList.innerHTML = ''; // Clear previous entries
     for (var i = 0; i < array.length; i++) {
-        var value = array[i].value;
-        if (parseFloat(value)) {
-            var listItem = document.createElement('li');
-            listItem.textContent = `Score ${i + 1}: ${parseFloat(value).toFixed(2)}`;
-            scoreList.appendChild(listItem);
-        }
+        array[i].value = '';
     }
+    document.getElementById('total').innerHTML = '0.0';
+    document.getElementById('count').innerHTML = '0.0';
+    document.getElementById('average').innerHTML = '0.0';
 }
-// In the calculator function, after updating totals:
-displayScores();
+
 
 // Creates a new input box
 function newInputLine(index) {
