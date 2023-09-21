@@ -8,6 +8,8 @@ type: hacks
 courses: { compsci: {week: 4} }
 ---
 
+%%html
+
 <!-- Help Message -->
 <h3>Input scores, press tab to add each new number.</h3>
 <!-- Totals -->
@@ -26,68 +28,40 @@ courses: { compsci: {week: 4} }
 <script>
 // Executes on input event and calculates totals
 function calculator(event) {
-  var key = event.key;
+    var key = event.key;
+    // Check if the pressed key is the "Tab" key (key code 9) or "Enter" key (key code 13)
+    if (key === "Tab" || key === "Enter") { 
+        event.preventDefault(); // Prevent default behavior (tabbing to the next element)
+   
+        var array = document.getElementsByName('score'); // setup array of scores
+        var total = 0;  // running total
+        var count = 0;  // count of input elements with valid values
 
-  // Check if the pressed key is the "Tab" key (key code 9) or "Enter" key (key code 13)
-  if (key === "Tab" || key === "Enter") {
-    event.preventDefault(); // Prevent default behavior (tabbing to the next element)
+        for (var i = 0; i < array.length; i++) {  // iterate through array
+            var value = array[i].value;
+            if (parseFloat(value)) {
+                var parsedValue = parseFloat(value);
+                total += parsedValue;  // add to running total
+                count++;
+            }
+        }
 
-    var array = document.getElementsByName('score'); // setup array of scores
-    var total = 0;  // running total
-    var count = 0;  // count of input elements with valid values
+        // update totals
+        document.getElementById('total').innerHTML = total.toFixed(2); // show two decimals
+        document.getElementById('count').innerHTML = count;
 
-    for (var i = 0; i < array.length; i++) {  // iterate through array
-      var value = array[i].value;
+        if (count > 0) {
+            document.getElementById('average').innerHTML = (total / count).toFixed(2);
+        } else {
+            document.getElementById('average').innerHTML = "0.0";
+        }
 
-      if (parseFloat(value)) {
-        var parsedValue = parseFloat(value);
-        total += parsedValue;  // add to running total
-        count++;
-      }
+        // adds newInputLine, only if all array values satisfy parseFloat 
+        if (count === document.getElementsByName('score').length) {
+            newInputLine(count); // make a new input line
+        }
     }
-
-    // update totals
-    document.getElementById('total').innerHTML = total.toFixed(2); // show two decimals
-    document.getElementById('count').innerHTML = count;
-
-    if (count > 0) {
-      var average = total / count;
-      document.getElementById('average').innerHTML = average.toFixed(2);
-
-      // Calculate letter grade based on average score
-      var letterGrade = calculateLetterGrade(average);
-      document.getElementById('letterGrade').innerHTML = letterGrade;
-    } else {
-      document.getElementById('average').innerHTML = "0.0";
-      document.getElementById('letterGrade').innerHTML = ""; // Clear letter grade if there are no scores.
-    }
-
-    // adds newInputLine, only if all array values satisfy parseFloat 
-    if (count === document.getElementsByName('score').length) {
-      newInputLine(count); // make a new input line
-    }
-  }
 }
-
-// Function to calculate the letter grade based on the average score
-function calculateLetterGrade(average) {
-  if (average >= 90) {
-    return 'A';
-  } else if (average >= 80) {
-    return 'B';
-  } else if (average >= 70) {
-    return 'C';
-  } else if (average >= 60) {
-    return 'D';
-  } else {
-    return 'F';
-  }
-}
-
-<!-- Letter Grade -->
-<div>
-  Letter Grade: <span id="letterGrade"></span>
-</div>
 
 // Creates a new input box
 function newInputLine(index) {
